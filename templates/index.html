@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Funny Excuse Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎭 Excuse Generator</h1>
+
+        <p class="subtitle">
+            Need an excuse? We have got you covered!
+        </p>
+
+        <div class="emoji">😂 🤣 😴</div>
+
+        <form action="/generate" method="POST">
+
+            <label>Select Your Situation</label>
+
+            <select name="situation" required>
+
+                <option value="" disabled selected>
+                    Choose your situation
+                </option>
+
+                <option value="Late to class">
+                    🏫 Late to class
+                </option>
+
+                <option value="Homework not completed">
+                    📚 Homework not completed
+                </option>
+
+                <option value="Missed an exam">
+                    📝 Missed an exam
+                </option>
+
+                <option value="Didn't attend meeting">
+                    💻 Didn't attend meeting
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Generate My Excuse 😂
+            </button>
+
+        </form>
+
+        {% if excuse %}
+
+        <div class="result">
+
+            <h2>Your Excuse Is...</h2>
+
+            <p>{{ excuse }}</p>
+
+            <span>Situation: {{ situation }}</span>
+
+        </div>
+
+        {% endif %}
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+        <footer>
+            Made with ❤️ using Python Flask
+        </footer>
+
+    </div>
+
+</body>
+</html>
